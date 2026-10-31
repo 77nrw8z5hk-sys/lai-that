@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://77nrw8z5hk-sys.github.io/lai-that/sitemap.xml

@@ -10,7 +10,7 @@ Tiền thật vào Vietcombank 1016315101 (Dương Trọng Tín) từ bán mã m
 Web tĩnh GitHub Pages: https://77nrw8z5hk-sys.github.io/lai-that/ (đẩy lên nhánh `main` là tự đăng).
 - `index.html` + `app.js`: thả file đơn Shopee/TikTok → lãi ròng theo mã hàng. Bản miễn phí: 5 mã, 31 ngày.
 - Mua: VietQR tạo tại chỗ → khách nhắn Zalo 0972699196 → chủ trang cấp mã (`tools/keygen.mjs` chỉ ở máy chủ trang, KHÔNG đưa lên kho).
-- Bài SEO: `phi-shopee-2026.html` (mẫu trình bày). Mọi bài mới thêm vào `sitemap.xml` và mục "Đọc thêm" ở `index.html`.
+- Bài SEO: `phi-shopee-2026.html` (mẫu trình bày). Mọi bài mới thêm vào `sitemap.xml` và thêm 1 thẻ `<a href><b>tiêu đề</b><span>1 câu mô tả</span></a>` vào khối `.reads` (mục "Hiểu từng đồng phí") ở `index.html`. Giữ nguyên giao diện trang chủ, không đổi màu/font/bố cục.
 
 ## Việc mỗi lần chạy (theo thứ tự)
 1. Kiểm trang chủ, `app.js`, mọi bài trong sitemap trả 200 (curl). Hỏng → sửa trước tiên.

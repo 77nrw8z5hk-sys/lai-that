@@ -240,7 +240,7 @@ async function load(files) {
   try { orders = await readFiles([...files]); render(); if (!orders.length) $("status").textContent = "Không thấy cột Mã đơn hàng / Order ID trong file."; }
   catch (e) { $("status").textContent = "Không đọc được file: " + e.message; }
 }
-document.querySelectorAll("input[type=number]").forEach((i) => { if (i.closest(".grid")) i.oninput = render; });
+document.querySelectorAll("input[type=number]").forEach((i) => { if (i.closest(".fee-grid")) i.oninput = render; });
 document.querySelectorAll("[data-plan]").forEach((b) => (b.onclick = () => showPay(b.dataset.plan, +b.dataset.amt)));
 $("csv").onclick = exportCsv;
 $("sent").onclick = () => {
@@ -257,3 +257,45 @@ $("unlock").onclick = async () => {
   unlocked = true; $("keymsg").textContent = "Đã mở khoá bản đầy đủ."; render();
 };
 (async () => { const k = store.get("lt_key", ""); if (k && (await checkKey(k))) unlocked = true; })();
+
+// ---------- Hoá đơn bóc tách 1 đơn (đầu trang) ----------
+let sale = "shopee";
+const vnd = (s) => +String(s).replace(/\D/g, "") || 0;
+function heroCalc() {
+  const price = vnd($("h_price").value), cost = vnd($("h_cost").value);
+  const pct = (id) => (val(id) / 100) * price;
+  const lines = sale === "tiktok"
+    ? [["Hoa hồng TikTok", pct("tt_fix")], ["Phí giao dịch", pct("tt_pay")], ["Phí xử lý đơn", 3000], ["Thuế hộ kinh doanh", pct("tax")]]
+    // Khớp đơn Shopee thật đã quyết toán 10/2026: cố định 10,5% + gói Xtra 5% + quảng cáo hiển thị 1,08% + PiShip 2.700đ
+    : [["Phí cố định + gói Xtra", pct("sp_fix") + 0.05 * price], ["Phí thanh toán", pct("sp_pay")], ["Phí dịch vụ", val("sp_svc")], ["PiShip", 2700], ["Quảng cáo hiển thị", 0.0108 * price], ["Thuế hộ kinh doanh", pct("tax")]];
+  lines.push(["Giá vốn", cost]);
+  const box = $("h_lines");
+  box.textContent = "";
+  const add = (label, amount, cls) => {
+    const d = document.createElement("div"); d.className = "r-line" + (cls ? " " + cls : "");
+    const a = document.createElement("span"); a.textContent = label;
+    const b = document.createElement("b"); b.textContent = amount;
+    d.append(a, b); box.appendChild(d);
+  };
+  add("Khách trả", fmt(price));
+  let left = price;
+  for (const [l, v] of lines) { add(l, "−" + fmt(v), "cut"); left -= v; }
+  $("h_net").textContent = fmt(left);
+  $("h_total").classList.toggle("neg", left < 0);
+  $("h_note").textContent = price ? `Sàn chuyển về ${fmt(left + cost)} (${Math.round((left + cost) / price * 100)}%), biên lãi ${(left / price * 100).toFixed(1)}%` : "";
+}
+["h_price", "h_cost"].forEach((id) => {
+  $(id).addEventListener("input", (e) => {
+    const n = vnd(e.target.value);
+    e.target.value = n ? n.toLocaleString("vi-VN") : "";
+    heroCalc();
+  });
+});
+document.querySelectorAll("[data-sale]").forEach((b) => (b.onclick = () => {
+  sale = b.dataset.sale;
+  document.querySelectorAll("[data-sale]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+  heroCalc();
+}));
+document.querySelectorAll(".fee-grid input").forEach((i) => i.addEventListener("input", heroCalc));
+$("drop").addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); file.click(); } });
+heroCalc();

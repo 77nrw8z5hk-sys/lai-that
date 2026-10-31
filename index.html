@@ -3,106 +3,277 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lãi Thật – tính lãi ròng Shopee & TikTok Shop</title>
-<meta name="description" content="Thả file đơn Shopee/TikTok Shop, biết ngay lãi ròng từng mã hàng sau phí sàn, quảng cáo, hoàn hàng và thuế hộ kinh doanh. Dữ liệu không rời máy bạn.">
+<title>Lãi Thật – bán Shopee, TikTok Shop thực lãi bao nhiêu?</title>
+<meta name="description" content="Gõ giá bán và giá vốn, thấy ngay tiền về túi sau phí sàn và thuế. Thả file đơn Shopee/TikTok Shop để biết mã hàng nào lãi, mã nào lỗ. Dữ liệu không rời máy bạn.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f7f7f4;--card:#fff;--ink:#1d1d1b;--mute:#6b6b66;--line:#e4e3dd;--acc:#0b7a4b;--bad:#b3261e;--soft:#e9f5ef}
-@media (prefers-color-scheme:dark){:root{--bg:#141413;--card:#1e1e1c;--ink:#ecebe6;--mute:#a09f98;--line:#33322e;--acc:#3fbf85;--bad:#f2867e;--soft:#1d3329}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-main{max-width:1080px;margin:0 auto;padding:24px 16px 64px}
-h1{font-size:28px;margin:0 0 4px}h2{font-size:18px;margin:28px 0 10px}
-.sub{color:var(--mute);margin:0 0 20px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px}
-.drop{border:2px dashed var(--line);border-radius:12px;padding:28px;text-align:center;cursor:pointer}
-.drop.on{border-color:var(--acc);background:var(--soft)}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-.kpi b{display:block;font-size:22px;font-variant-numeric:tabular-nums}.kpi span{color:var(--mute);font-size:13px}
-table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
-th:first-child,td:first-child{text-align:left;white-space:normal}
-.scroll{overflow-x:auto}
-input[type=number],input[type=text]{width:100%;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
-td input{width:96px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
-label{font-size:13px;color:var(--mute)}
-button{background:var(--acc);color:#fff;border:0;border-radius:8px;padding:9px 14px;font:inherit;cursor:pointer}
-button.ghost{background:transparent;color:var(--acc);border:1px solid var(--acc)}
-.neg{color:var(--bad)}.pos{color:var(--acc)}
-.lock{background:var(--soft);border-radius:10px;padding:12px;margin-top:10px}
-.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.plan{border:1px solid var(--line);border-radius:12px;padding:14px}.plan b{font-size:22px}
-#qr{display:flex;justify-content:center;margin:10px 0}#qr img{width:220px;height:220px}
-.note{font-size:13px;color:var(--mute)}
-.hide{display:none}
+:root{
+  --paper:#F3F6F5; --sheet:#FFFFFF; --ink:#13233A; --mute:#5B6878; --line:#D9E0E4;
+  --money:#0F8A5F; --money-soft:#E2F3EB; --loss:#C8342B; --mark:#FFE58A;
+  --sans:"Be Vietnam Pro",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0F1A28; --sheet:#172536; --ink:#E8EEF3; --mute:#9AA8B6; --line:#2A3A4D;
+  --money:#3CC48C; --money-soft:#173A31; --loss:#F07A70; --mark:#6B5A12;
+}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--money)}
+:focus-visible{outline:3px solid var(--money);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+.top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.02em;text-decoration:none;color:var(--ink)}
+.logo span{display:inline-block;background:var(--money);color:#fff;border-radius:6px;padding:0 6px;margin-right:6px}
+.top nav a{color:var(--ink);text-decoration:none;margin-left:20px;font-weight:500;font-size:15px}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:40px 0 72px}
+.hero h1{font-size:clamp(34px,5.2vw,60px);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:0 0 20px}
+.hero h1 s{text-decoration-thickness:4px;text-decoration-color:var(--loss);color:var(--mute)}
+.lede{font-size:19px;color:var(--mute);max-width:34ch;margin:0 0 28px}
+.btn{display:inline-block;background:var(--money);color:#fff;border:0;border-radius:10px;padding:14px 22px;font:700 16px var(--sans);cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(1.08)}
+.btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
+.trust{margin-top:22px;color:var(--mute);font-size:14px;max-width:40ch}
+
+/* Receipt */
+.receipt{background:var(--sheet);font-family:var(--mono);font-size:14px;padding:26px 24px 34px;position:relative;
+  box-shadow:0 1px 0 var(--line),0 24px 48px -28px rgba(19,35,58,.45);transform:rotate(1.2deg);
+  -webkit-mask:radial-gradient(circle 7px at 50% 100%,#0000 98%,#000) 0 0/18px 100% repeat-x;
+          mask:radial-gradient(circle 7px at 50% 100%,#0000 98%,#000) 0 0/18px 100% repeat-x}
+.receipt h2{font:600 13px var(--mono);text-align:center;margin:0 0 14px;color:var(--mute)}
+.r-in{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.r-in label{font-size:12px;color:var(--mute);display:block}
+.r-in input,.r-in select{width:100%;font:600 18px var(--mono);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 10px}
+.seg{display:flex;gap:6px;margin-bottom:14px}
+.seg button{flex:1;font:600 13px var(--mono);padding:7px;border-radius:6px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--sheet);border-color:var(--ink)}
+.r-line{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px dashed var(--line)}
+.r-line b{font-weight:600;font-variant-numeric:tabular-nums}
+.r-line.cut b{color:var(--loss)}
+.r-total{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;padding:10px 8px;background:var(--mark);border-radius:4px}
+.r-total b{font-size:28px;font-weight:600;font-variant-numeric:tabular-nums}
+.r-total.neg b{color:var(--loss)}
+.r-note{font-size:12px;color:var(--mute);margin-top:10px;text-align:center}
+
+/* Sections */
+section{padding:72px 0;border-top:1px solid var(--line)}
+section h2{font-size:clamp(26px,3.4vw,38px);letter-spacing:-.025em;line-height:1.15;margin:0 0 12px;font-weight:800}
+.sec-lede{color:var(--mute);max-width:60ch;margin:0 0 32px;font-size:17px}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;counter-reset:s;list-style:none;padding:0;margin:0 0 40px}
+.steps li{counter-increment:s;padding-left:52px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-weight:800}
+.steps b{display:block;margin-bottom:4px}
+.steps span{color:var(--mute);font-size:15px}
+
+.drop{background:var(--sheet);border:2px dashed var(--line);border-radius:16px;padding:44px 20px;text-align:center;cursor:pointer;transition:border-color .15s,background .15s}
+.drop:hover,.drop.on{border-color:var(--money);background:var(--money-soft)}
+.drop strong{display:block;font-size:20px;margin-bottom:6px}
+.drop small{color:var(--mute);font-size:14px}
+.status{color:var(--mute);font-size:14px;min-height:1.4em;margin:12px 0 0}
+
+details.fees{margin-top:18px;background:var(--sheet);border-radius:12px;padding:12px 16px;border:1px solid var(--line)}
+details.fees summary{cursor:pointer;font-weight:600}
+.fee-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:14px}
+.fee-grid label{font-size:13px;color:var(--mute)}
+.fee-grid input{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font:500 15px var(--sans)}
+.small{font-size:13px;color:var(--mute)}
+
+#out{margin-top:28px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:20px}
+.kpi{background:var(--sheet);padding:16px 18px}
+.kpi span{display:block;color:var(--mute);font-size:13px}
+.kpi b{font-size:24px;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.kpi.big{background:var(--ink);color:var(--paper)}.kpi.big span{color:inherit;opacity:.75}
+.kpi.big b.pos{color:#7FE3B6}.kpi.big b.neg{color:#FF9C93}
+.table-wrap{background:var(--sheet);border:1px solid var(--line);border-radius:14px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:15px}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th{font-size:13px;color:var(--mute);font-weight:500}
+th:first-child,td:first-child{text-align:left;white-space:normal;min-width:140px}
+td input{width:100px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);font:inherit;text-align:right}
+.neg{color:var(--loss)}.pos{color:var(--money)}
+.lock{margin:14px 0 0;padding:14px 16px;background:var(--mark);border-radius:10px;color:#3a2f00}
+.lock a{color:inherit;font-weight:700}
+.row-actions{margin-top:14px}
+
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:760px}
+.plan{background:var(--sheet);border:1px solid var(--line);border-radius:16px;padding:24px}
+.plan.best{border:2px solid var(--money)}
+.plan h3{margin:0 0 4px;font-size:18px}
+.price{font-size:40px;font-weight:800;letter-spacing:-.03em;margin:4px 0}
+.plan ul{padding-left:18px;color:var(--mute);margin:10px 0 18px}
+.pay{margin-top:24px;max-width:760px;background:var(--sheet);border:1px solid var(--line);border-radius:16px;padding:24px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center}
+#qr img{width:200px;height:200px;display:block;image-rendering:pixelated}
+.pay dl{margin:0 0 14px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px}
+.pay dt{color:var(--mute)}.pay dd{margin:0;font-weight:700}
+.unlock{display:flex;gap:10px;margin-top:24px;max-width:760px}
+.unlock input{flex:1;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--sheet);color:var(--ink);font:500 16px var(--mono)}
+
+.reads{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.reads a{display:block;text-decoration:none;color:var(--ink);background:var(--sheet);border-left:4px solid var(--money);padding:18px 20px;border-radius:0 12px 12px 0}
+.reads a b{display:block;font-size:17px;margin-bottom:4px}
+.reads a span{color:var(--mute);font-size:14px}
+footer{padding:36px 0 56px;color:var(--mute);font-size:14px;border-top:1px solid var(--line)}
+.hide{display:none!important}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:36px;padding-top:16px}
+  .receipt{transform:none}
+  .steps{grid-template-columns:1fr}
+  .kpis{grid-template-columns:1fr 1fr}
+  .plans{grid-template-columns:1fr}
+  .pay{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .pay dl{text-align:left}
+  .top nav a:not(:last-child){display:none}
+  section{padding:56px 0}
+}
 </style>
 </head>
 <body>
-<main>
-<h1>Lãi Thật</h1>
-<p class="sub">Thả file đơn Shopee hoặc TikTok Shop → biết ngay mã hàng nào lãi, mã nào lỗ, sau mọi loại phí và thuế. File xử lý ngay trong trình duyệt, không tải lên đâu cả.</p>
+<div class="wrap">
+<header class="top">
+  <a class="logo" href="./"><span>₫</span>Lãi Thật</a>
+  <nav><a href="#cong-cu">Công cụ</a><a href="#bai-viet">Bài viết</a><a href="#mua">Bảng giá</a></nav>
+</header>
 
-<div class="card">
-  <div id="drop" class="drop">
-    <b>Kéo file vào đây</b> hoặc bấm để chọn<br>
-    <span class="note">Shopee: Đơn hàng → Xuất (Order.all…xlsx) · TikTok: Đơn hàng → Xuất (csv/xlsx). Chọn được nhiều file cùng lúc.</span>
+<div class="hero">
+  <div>
+    <h1>Shopee báo bạn bán được <s>72.000đ</s>. Về túi chỉ 48.962đ.</h1>
+    <p class="lede">Phí cố định, phí thanh toán, phí dịch vụ, thuế. Gõ thử giá bán của bạn bên cạnh để thấy mỗi đơn thực sự còn lại bao nhiêu.</p>
+    <a class="btn" href="#cong-cu">Kiểm cả shop bằng file đơn</a>
+    <p class="trust">Miễn phí cho 31 ngày gần nhất. File đơn được đọc ngay trên máy bạn, không gửi đi đâu.</p>
+  </div>
+
+  <div class="receipt" aria-live="polite">
+    <h2>BÓC TÁCH 1 ĐƠN HÀNG</h2>
+    <div class="seg" role="group" aria-label="Chọn sàn">
+      <button type="button" data-sale="shopee" aria-pressed="true">Shopee</button>
+      <button type="button" data-sale="tiktok" aria-pressed="false">TikTok Shop</button>
+    </div>
+    <div class="r-in">
+      <div><label for="h_price">Giá khách trả</label><input id="h_price" inputmode="numeric" value="72.000"></div>
+      <div><label for="h_cost">Giá vốn của bạn</label><input id="h_cost" inputmode="numeric" value="30.000"></div>
+    </div>
+    <div id="h_lines"></div>
+    <div class="r-total" id="h_total"><span>Lãi thật / đơn</span><b id="h_net">–</b></div>
+    <p class="r-note" id="h_note"></p>
+  </div>
+</div>
+</div>
+
+<section id="cong-cu">
+<div class="wrap">
+  <h2>Mã hàng nào đang ăn lãi của bạn?</h2>
+  <p class="sec-lede">Thả file xuất đơn từ Kênh Người Bán. Lãi Thật tính lãi ròng từng mã hàng, tách đơn huỷ và hoàn, cộng sẵn thuế hộ kinh doanh.</p>
+  <ol class="steps">
+    <li><b>Xuất file đơn</b><span>Shopee: Đơn hàng → Xuất. TikTok: Đơn hàng → Xuất (csv hoặc xlsx).</span></li>
+    <li><b>Thả file vào đây</b><span>Được chọn nhiều file, cả Shopee lẫn TikTok cùng lúc.</span></li>
+    <li><b>Nhập giá vốn một lần</b><span>Máy nhớ giá vốn cho lần sau, chỉ trên trình duyệt của bạn.</span></li>
+  </ol>
+
+  <div id="drop" class="drop" tabindex="0" role="button" aria-label="Chọn file đơn hàng">
+    <strong>Kéo file đơn vào đây</strong>
+    <small>hoặc bấm để chọn file .xlsx, .csv</small>
     <input id="file" type="file" accept=".xlsx,.xls,.csv" multiple class="hide">
   </div>
-  <p id="status" class="note"></p>
-</div>
+  <p id="status" class="status"></p>
 
-<div class="card">
-  <b>Thiết lập phí</b> <span class="note">(mặc định theo biểu phí 2026; sửa theo ngành hàng của bạn)</span>
-  <div class="grid" style="margin-top:8px">
-    <div><label>Shopee phí cố định %</label><input id="sp_fix" type="number" step="0.1" value="10.5"></div>
-    <div><label>Shopee phí thanh toán %</label><input id="sp_pay" type="number" step="0.1" value="6"></div>
-    <div><label>Shopee phí dịch vụ đ/đơn</label><input id="sp_svc" type="number" value="3000"></div>
-    <div><label>TikTok hoa hồng %</label><input id="tt_fix" type="number" step="0.1" value="10"></div>
-    <div><label>TikTok phí giao dịch %</label><input id="tt_pay" type="number" step="0.1" value="6"></div>
-    <div><label>Quảng cáo + affiliate % doanh thu</label><input id="ads" type="number" step="0.1" value="0"></div>
-    <div><label>Thuế hộ KD % doanh thu</label><input id="tax" type="number" step="0.1" value="1.5"></div>
-    <div><label>Đóng gói đ/đơn</label><input id="pack" type="number" value="0"></div>
-  </div>
-  <p class="note">Thuế 1,5% = GTGT 1% + TNCN 0,5% cho hộ phân phối hàng hoá; tự kiểm tra mức áp dụng cho hộ của bạn.</p>
-</div>
+  <details class="fees">
+    <summary>Chỉnh biểu phí theo ngành hàng của bạn</summary>
+    <div class="fee-grid">
+      <div><label for="sp_fix">Shopee phí cố định %</label><input id="sp_fix" type="number" step="0.1" value="10.5"></div>
+      <div><label for="sp_pay">Shopee phí thanh toán %</label><input id="sp_pay" type="number" step="0.1" value="6"></div>
+      <div><label for="sp_svc">Shopee phí dịch vụ đ/đơn</label><input id="sp_svc" type="number" value="3000"></div>
+      <div><label for="tt_fix">TikTok hoa hồng %</label><input id="tt_fix" type="number" step="0.1" value="10"></div>
+      <div><label for="tt_pay">TikTok phí giao dịch %</label><input id="tt_pay" type="number" step="0.1" value="6"></div>
+      <div><label for="ads">Quảng cáo + affiliate %</label><input id="ads" type="number" step="0.1" value="0"></div>
+      <div><label for="tax">Thuế hộ kinh doanh %</label><input id="tax" type="number" step="0.1" value="1.5"></div>
+      <div><label for="pack">Đóng gói đ/đơn</label><input id="pack" type="number" value="0"></div>
+    </div>
+    <p class="small">Mặc định theo biểu phí ngành Nhà cửa & Đời sống 2026. Thuế 1,5% = GTGT 1% + TNCN 0,5% cho hộ bán hàng hoá; kiểm tra mức áp dụng cho hộ của bạn.</p>
+  </details>
 
-<div id="out" class="hide">
-  <div class="card kpis">
-    <div class="kpi"><b id="k_rev"></b><span>Doanh thu hàng (đơn thành công)</span></div>
-    <div class="kpi"><b id="k_fee"></b><span>Phí sàn + quảng cáo</span></div>
-    <div class="kpi"><b id="k_tax"></b><span>Thuế ước tính</span></div>
-    <div class="kpi"><b id="k_cogs"></b><span>Giá vốn</span></div>
-    <div class="kpi"><b id="k_net"></b><span>Lãi ròng</span></div>
-    <div class="kpi"><b id="k_ret"></b><span>Đơn huỷ / hoàn</span></div>
-  </div>
-  <div class="card">
-    <b>Theo mã hàng</b> <span class="note">– nhập giá vốn 1 lần, máy nhớ cho lần sau</span>
-    <div class="scroll"><table id="tbl"><thead><tr><th>Mã hàng</th><th>SL</th><th>Doanh thu</th><th>Phí</th><th>Giá vốn/cái</th><th>Lãi ròng</th><th>Biên</th></tr></thead><tbody></tbody></table></div>
-    <div id="lock" class="lock hide">Bản miễn phí hiện 5 mã hàng đầu và dữ liệu 31 ngày. <b>Mở khoá</b> để xem toàn bộ, xuất Excel sổ doanh thu kê khai thuế.</div>
-    <p style="margin-top:12px"><button id="csv" class="ghost">Tải sổ doanh thu (CSV)</button></p>
+  <div id="out" class="hide">
+    <div class="kpis">
+      <div class="kpi big"><span>Lãi ròng</span><b id="k_net"></b></div>
+      <div class="kpi"><span>Doanh thu đơn thành công</span><b id="k_rev"></b></div>
+      <div class="kpi"><span>Phí sàn + quảng cáo</span><b id="k_fee"></b></div>
+      <div class="kpi"><span>Thuế ước tính</span><b id="k_tax"></b></div>
+      <div class="kpi"><span>Giá vốn</span><b id="k_cogs"></b></div>
+      <div class="kpi"><span>Đơn huỷ, hoàn / tổng đơn</span><b id="k_ret"></b></div>
+    </div>
+    <div class="table-wrap">
+      <table id="tbl"><thead><tr><th>Mã hàng</th><th>Đã bán</th><th>Doanh thu</th><th>Phí + thuế</th><th>Giá vốn / cái</th><th>Lãi ròng</th><th>Biên lãi</th></tr></thead><tbody></tbody></table>
+    </div>
+    <p id="lock" class="lock hide">Bản miễn phí hiện 5 mã hàng bán chạy nhất trong 31 ngày gần nhất. <a href="#mua">Mở khoá để xem toàn bộ và tải sổ doanh thu</a>.</p>
+    <p class="row-actions"><button id="csv" class="btn line" type="button">Tải sổ doanh thu (CSV)</button></p>
   </div>
 </div>
+</section>
 
-<h2 id="buy">Mở khoá đầy đủ</h2>
-<div class="card">
+<section id="mua">
+<div class="wrap">
+  <h2>Mở khoá toàn bộ shop</h2>
+  <p class="sec-lede">Chuyển khoản một lần, nhận mã qua Zalo. Không cần tạo tài khoản.</p>
   <div class="plans">
-    <div class="plan"><div>Tháng</div><b>99.000đ</b><p class="note">Toàn bộ mã hàng, không giới hạn ngày, xuất sổ doanh thu.</p><button data-plan="T" data-amt="99000">Mua gói tháng</button></div>
-    <div class="plan"><div>Trọn đời</div><b>499.000đ</b><p class="note">Như gói tháng, dùng mãi, cập nhật biểu phí miễn phí.</p><button data-plan="L" data-amt="499000">Mua trọn đời</button></div>
+    <div class="plan">
+      <h3>Theo tháng</h3>
+      <div class="price">99.000đ</div>
+      <ul><li>Không giới hạn mã hàng và số ngày</li><li>Tải sổ doanh thu để kê khai</li></ul>
+      <button class="btn line" type="button" data-plan="T" data-amt="99000">Mua gói tháng</button>
+    </div>
+    <div class="plan best">
+      <h3>Trọn đời</h3>
+      <div class="price">499.000đ</div>
+      <ul><li>Mọi thứ của gói tháng, dùng mãi</li><li>Cập nhật biểu phí sàn miễn phí</li></ul>
+      <button class="btn" type="button" data-plan="L" data-amt="499000">Mua trọn đời</button>
+    </div>
   </div>
-  <div id="pay" class="hide" style="margin-top:14px;text-align:center">
-    <div>Quét mã bằng app ngân hàng – <b>Vietcombank 1016315101 – DUONG TRONG TIN</b></div>
-    <div id="qr"></div>
-    <div>Nội dung chuyển khoản: <b id="memo"></b> · Số tiền: <b id="amt"></b></div>
-    <p class="note">Giữ nguyên nội dung để đối soát. Chuyển xong bấm nút dưới để nhắn Zalo 0972699196, nhận mã mở khoá.</p>
-    <p><button id="sent">Tôi đã chuyển khoản – nhắn Zalo</button></p>
-    <p id="sentmsg" class="note"></p>
-  </div>
-  <div style="margin-top:14px" class="grid"><input id="key" type="text" placeholder="Nhập mã mở khoá LT-…"><button id="unlock">Mở khoá</button></div>
-  <p id="keymsg" class="note"></p>
-</div>
 
-<p class="note">Đọc thêm: <a href="phi-shopee-2026.html" style="color:var(--acc)">Phí Shopee 2026 – bán 72.000đ shop nhận về bao nhiêu?</a><br>Đọc thêm: <a href="hang-hoan-tinh-lai.html" style="color:var(--acc)">Hàng hoàn trả – một đơn hoàn xoá lãi của mấy đơn?</a></p>
-<p class="note">Lãi Thật không phải tư vấn tài chính hay thuế. Số liệu là ước tính từ file bạn tải lên và biểu phí bạn nhập.</p>
-</main>
+  <div id="pay" class="pay hide">
+    <div id="qr"></div>
+    <div>
+      <dl>
+        <dt>Ngân hàng</dt><dd>Vietcombank</dd>
+        <dt>Số tài khoản</dt><dd>1016315101</dd>
+        <dt>Chủ tài khoản</dt><dd>DUONG TRONG TIN</dd>
+        <dt>Số tiền</dt><dd id="amt"></dd>
+        <dt>Nội dung</dt><dd id="memo"></dd>
+      </dl>
+      <p class="small">Quét mã bằng app ngân hàng, giữ nguyên nội dung chuyển khoản. Chuyển xong bấm nút dưới để nhắn Zalo nhận mã mở khoá.</p>
+      <button id="sent" class="btn" type="button">Tôi đã chuyển khoản, nhắn Zalo</button>
+      <p id="sentmsg" class="small"></p>
+    </div>
+  </div>
+
+  <div class="unlock">
+    <input id="key" type="text" placeholder="Nhập mã mở khoá LT-…" aria-label="Mã mở khoá">
+    <button id="unlock" class="btn" type="button">Mở khoá</button>
+  </div>
+  <p id="keymsg" class="small"></p>
+</div>
+</section>
+
+<section id="bai-viet">
+<div class="wrap">
+  <h2>Hiểu từng đồng phí</h2>
+  <p class="sec-lede">Bài viết có số liệu thật và ví dụ tính tay, cập nhật theo biểu phí 2026.</p>
+  <div class="reads">
+    <a href="phi-shopee-2026.html"><b>Phí Shopee 2026: bán 72.000đ shop nhận về bao nhiêu?</b><span>Bóc tách một đơn đã quyết toán, kèm công thức giá bán tối thiểu.</span></a>
+    <a href="hang-hoan-tinh-lai.html"><b>Hàng hoàn trả: một đơn hoàn xoá lãi của mấy đơn?</b><span>Cách tính thiệt hại thật của đơn hoàn và tỉ lệ hoàn chấp nhận được.</span></a>
+  </div>
+</div>
+</section>
+
+<footer>
+<div class="wrap">Lãi Thật không phải tư vấn tài chính hay thuế. Số liệu là ước tính từ file bạn tải lên và biểu phí bạn nhập. Liên hệ Zalo 0972699196.</div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>

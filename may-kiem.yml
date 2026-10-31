@@ -1,0 +1,31 @@
+# Máy tự chạy hằng ngày, không dùng Claude: kiểm web, báo lỗi qua Issue (GitHub gửi email chủ kho), báo Bing/IndexNow có trang mới.
+name: may-kiem
+on:
+  schedule:
+    - cron: "0 2 * * *"   # 09:00 giờ Việt Nam
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  kiem:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Kiem moi trang tra 200
+        run: |
+          fail=""
+          for u in $(grep -o '<loc>[^<]*' sitemap.xml | sed 's/<loc>//') https://77nrw8z5hk-sys.github.io/lai-that/app.js; do
+            c=$(curl -s -o /dev/null -w '%{http_code}' "$u"); echo "$c $u"
+            [ "$c" = 200 ] || fail="$fail $u($c)"
+          done
+          echo "FAIL=$fail" >> "$GITHUB_ENV"
+      - name: Bao loi qua Issue
+        if: env.FAIL != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue create --repo "$GITHUB_REPOSITORY" --title "Web Lai That loi $(date +%F)" --body "Trang loi:$FAIL"
+      - name: Bao IndexNow (Bing, Yandex)
+        run: |
+          urls=$(grep -o '<loc>[^<]*' sitemap.xml | sed 's/<loc>//' | jq -R . | jq -s -c .)
+          curl -s -o /dev/null -w 'IndexNow %{http_code}\n' -X POST https://api.indexnow.org/indexnow             -H 'Content-Type: application/json; charset=utf-8'             -d "{\"host\":\"77nrw8z5hk-sys.github.io\",\"key\":\"4d937ea8fae6abdf1d7de5490f91881c\",\"keyLocation\":\"https://77nrw8z5hk-sys.github.io/lai-that/4d937ea8fae6abdf1d7de5490f91881c.txt\",\"urlList\":$urls}"

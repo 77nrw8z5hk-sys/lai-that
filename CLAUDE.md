@@ -13,9 +13,11 @@ Web tĩnh GitHub Pages: https://77nrw8z5hk-sys.github.io/lai-that/ (đẩy lên 
 - Bài SEO: `phi-shopee-2026.html` (mẫu trình bày). Mọi bài mới thêm vào `sitemap.xml` và thêm 1 thẻ `<a href><b>tiêu đề</b><span>1 câu mô tả</span></a>` vào khối `.reads` (mục "Hiểu từng đồng phí") ở `index.html`. Giữ nguyên giao diện trang chủ, không đổi màu/font/bố cục.
 
 ## Việc mỗi lần chạy (theo thứ tự)
+0. Đọc `NGHIEN-CUU.md` (hướng đi, chủ đề ưu tiên). Có skill nào trong phiên hợp việc (SEO, viết nội dung, frontend) thì nạp và dùng, ghi tên skill vào nhật ký.
 1. Kiểm trang chủ, `app.js`, mọi bài trong sitemap trả 200 (curl). Hỏng → sửa trước tiên.
-2. Viết 1 bài hướng dẫn mới cho người bán Shopee/TikTok Shop VN (phí sàn, tính giá bán, thuế hộ kinh doanh bán online, hàng hoàn, quảng cáo, đối soát tiền về…). Chọn chủ đề người bán thật hay tìm, chưa có bài. Mỗi bài: số liệu cụ thể, công thức, ví dụ tính tay đúng, nút dẫn về công cụ, câu miễn trừ "không phải tư vấn thuế/tài chính". Không bịa số liệu sàn; chưa chắc thì ghi "kiểm tra trong Kênh Người Bán".
+2. Viết 1 bài theo danh sách ưu tiên trong `NGHIEN-CUU.md` (hết danh sách thì tự nghiên cứu chủ đề mới bằng WebSearch). Kiểm chứng mọi con số luật/phí bằng WebSearch, ghi nguồn cuối bài. Bài hướng dẫn mới cho người bán Shopee/TikTok Shop VN (phí sàn, tính giá bán, thuế hộ kinh doanh bán online, hàng hoàn, quảng cáo, đối soát tiền về…). Chọn chủ đề người bán thật hay tìm, chưa có bài. Mỗi bài: số liệu cụ thể, công thức, ví dụ tính tay đúng, nút dẫn về công cụ, câu miễn trừ "không phải tư vấn thuế/tài chính". Không bịa số liệu sàn; chưa chắc thì ghi "kiểm tra trong Kênh Người Bán".
 3. Mỗi tuần 1 lần (Chủ nhật): cải tiến công cụ hoặc trang chủ để tăng tỉ lệ mua (ví dụ thêm định dạng file, sửa lỗi đọc cột, câu chữ rõ hơn). Thử bằng dữ liệu mẫu trước khi đẩy.
+3b. Mỗi Thứ Hai: nghiên cứu lại thị trường (đối thủ, chủ đề người bán đang hỏi, thay đổi phí/thuế), cập nhật `NGHIEN-CUU.md`. Được tự quyết đổi hướng bài, thêm công cụ/trang mới trong kho này nếu số liệu cho thấy hướng cũ không ra đơn.
 4. Ghi 1 dòng vào `NHAT-KY.md`: ngày · việc đã làm · link bài · số liệu đo được.
 5. Commit + push thẳng `main`.
 

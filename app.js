@@ -22,14 +22,14 @@ let unlocked = false;
 
 // ---------- Đọc file ----------
 const COLS = {
-  id: ["mã đơn hàng", "order id"],
+  id: ["mã đơn hàng", "order id", "mã đơn"],
   status: ["trạng thái đơn hàng", "order status"],
-  sku: ["sku phân loại hàng", "seller sku", "sku sản phẩm", "sku"],
+  sku: ["sku phân loại hàng", "seller sku", "sku sản phẩm", "mã sku", "mã sản phẩm", "sku"],
   name: ["tên sản phẩm", "product name"],
-  qty: ["số lượng", "quantity"],
+  qty: ["số lượng", "quantity", "số lượng sản phẩm"],
   amount: ["tổng giá bán (sản phẩm)", "sku subtotal after discount", "giá ưu đãi", "thành tiền"],
   ship: ["phí vận chuyển mà người mua trả", "shipping fee after discount"],
-  date: ["ngày đặt hàng", "created time", "thời gian đặt hàng"],
+  date: ["ngày đặt hàng", "created time", "thời gian đặt hàng", "ngày tạo đơn", "order creation time"],
   return: ["trạng thái trả hàng/hoàn tiền", "cancelation/return type", "lý do hủy"],
 };
 

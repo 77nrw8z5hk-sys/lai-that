@@ -19,6 +19,12 @@
 6. Lãi thật sau thuế: ví dụ shop 50 triệu/tháng
 (Tiếp theo: tự nghiên cứu thêm bằng WebSearch, ghi nguồn cuối bài.)
 
+## Bài học Shopee Mall (chủ trang 01/11): shop Mall để mức giảm hiển thị khoảng 40%
+- Người mua bị hút bởi % giảm lớn. Người bán muốn chạy giảm 40% mà vẫn lãi thì phải niêm yết đúng: Giá niêm yết = Giá bán thật ÷ (1 − %giảm) ÷ (1 − %voucher). Ví dụ bán thật 81.600đ, giảm 40% → niêm yết 136.000đ.
+- Đây là TÍNH NĂNG ƯU TIÊN SỐ 1 (làm ngay lần chạy tới, không chờ Chủ nhật): ô "Muốn giảm bao nhiêu %?" trong tờ hoá đơn đầu trang + cột "Giá niêm yết để giảm X% vẫn lãi Y%" trong bảng mã hàng. Bài kèm: "Giảm 40% như shop Mall mà vẫn lãi: cách đặt giá niêm yết".
+- Cảnh báo trong bài và công cụ: giá niêm yết phải là giá thật từng bán; nâng giá ảo rồi giảm là vi phạm luật bảo vệ người tiêu dùng và quy định sàn.
+- Với chính Lãi Thật: chỉ dùng khuyến mãi thật có hạn (ví dụ "giá ra mắt đến 30/11"), không ghi giá gốc ảo.
+
 ## Tính năng nên làm (Chủ nhật)
 - Bảng "thuế sàn đã khấu trừ" theo tháng/quý + tổng năm, có trong bản miễn phí (móc câu), sổ chi tiết xuất CSV thuộc bản trả phí.
 - Ô "ước tính có thể được hoàn" kèm ghi chú ngưỡng phải tự đối chiếu.

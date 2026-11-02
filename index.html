@@ -159,10 +159,12 @@ footer{padding:36px 0 56px;color:var(--mute);font-size:14px;border-top:1px solid
     <div class="r-in">
       <div><label for="h_price">Giá khách trả</label><input id="h_price" inputmode="numeric" value="72.000"></div>
       <div><label for="h_cost">Giá vốn của bạn</label><input id="h_cost" inputmode="numeric" value="30.000"></div>
+      <div style="grid-column:1/-1"><label for="h_disc">Muốn hiển thị giảm bao nhiêu %? (0 = không giảm)</label><input id="h_disc" inputmode="numeric" value="40"></div>
     </div>
     <div id="h_lines"></div>
     <div class="r-total" id="h_total"><span>Lãi thật / đơn</span><b id="h_net">–</b></div>
     <p class="r-note" id="h_note"></p>
+    <p class="r-note" id="h_list"></p>
   </div>
 </div>
 </div>
@@ -209,8 +211,9 @@ footer{padding:36px 0 56px;color:var(--mute);font-size:14px;border-top:1px solid
       <div class="kpi"><span>Đơn huỷ, hoàn / tổng đơn</span><b id="k_ret"></b></div>
     </div>
     <div class="table-wrap">
-      <table id="tbl"><thead><tr><th>Mã hàng</th><th>Đã bán</th><th>Doanh thu</th><th>Phí + thuế</th><th>Giá vốn / cái</th><th>Lãi ròng</th><th>Biên lãi</th></tr></thead><tbody></tbody></table>
+      <table id="tbl"><thead><tr><th>Mã hàng</th><th>Đã bán</th><th>Doanh thu</th><th>Phí + thuế</th><th id="th_list">Giá niêm yết</th><th>Giá vốn / cái</th><th>Lãi ròng</th><th>Biên lãi</th></tr></thead><tbody></tbody></table>
     </div>
+    <p class="small">Cột "Giá niêm yết" là giá bạn đặt để sau khi giảm đúng % ở ô đầu trang, giá khách trả (và lãi) vẫn như hiện tại. Giá niêm yết phải là giá bạn thật sự đã bán; nâng giá ảo rồi giảm là vi phạm luật bảo vệ người tiêu dùng và quy định của sàn.</p>
     <p id="lock" class="lock hide">Bản miễn phí hiện 5 mã hàng bán chạy nhất trong 31 ngày gần nhất. <a href="#mua">Mở khoá để xem toàn bộ và tải sổ doanh thu</a>.</p>
     <p class="row-actions"><button id="csv" class="btn line" type="button">Tải sổ doanh thu (CSV)</button></p>
   </div>
@@ -267,6 +270,8 @@ footer{padding:36px 0 56px;color:var(--mute);font-size:14px;border-top:1px solid
   <div class="reads">
     <a href="phi-shopee-2026.html"><b>Phí Shopee 2026: bán 72.000đ shop nhận về bao nhiêu?</b><span>Bóc tách một đơn đã quyết toán, kèm công thức giá bán tối thiểu.</span></a>
     <a href="hang-hoan-tinh-lai.html"><b>Hàng hoàn trả: một đơn hoàn xoá lãi của mấy đơn?</b><span>Cách tính thiệt hại thật của đơn hoàn và tỉ lệ hoàn chấp nhận được.</span></a>
+    <a href="giam-gia-40-van-lai.html"><b>Giảm 40% như shop Mall mà vẫn lãi: cách đặt giá niêm yết</b><span>Công thức niêm yết từ giá bán thật, ví dụ tính tay, cảnh báo không nâng giá ảo.</span></a>
+    <a href="thue-san-khau-tru-1-5-phan-tram.html"><b>Sàn trừ 1,5% thuế: shop đã bị trừ bao nhiêu và khi nào đòi lại được?</b><span>Cách cộng số thuế sàn đã khấu trừ từ file đơn, kèm ví dụ tính tay.</span></a>
     <a href="roas-hoa-von-quang-cao.html"><b>ROAS hòa vốn: quảng cáo bao nhiêu thì không lỗ?</b><span>Công thức và ví dụ tính tay: ROAS tối thiểu theo lãi từng đơn.</span></a>
   </div>
 </div>

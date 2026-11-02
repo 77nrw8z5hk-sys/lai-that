@@ -33,3 +33,9 @@
 - https://www.misaeshop.vn/24423/phi-san-shopee/ · https://www.sapo.vn/blog/cap-nhat-phi-san-tmdt-thang-5-2026
 - https://www.sapo.vn/blog/thue-khoan-ho-kinh-doanh · https://luatminhkhue.vn/huong-dan-ho-kinh-doanh-ban-hang-online-khai-thue-nop-thue-tu-2026.aspx
 - https://amis.misa.vn/192715/phan-mem-quan-ly-don-hang-tiktok-shop/
+
+## Cập nhật Thứ Hai 02/11/2026
+- Đã làm: bài 1 (thuế 1,5% sàn khấu trừ) và bài giảm 40% niêm yết; tính năng ưu tiên số 1 (ô "muốn giảm %" + cột giá niêm yết) đã có trong công cụ.
+- Tìm lại: Nghị định 117/2025 hiệu lực 01/07/2025 (sàn khấu trừ nộp thay); ngưỡng miễn thuế vẫn mâu thuẫn giữa nguồn (500 triệu vs 1 tỷ; có nhắc NĐ 68/2026, NĐ 141/2026, TT 18/2026) → giữ cách ghi "đối chiếu văn bản gốc". Mức phạt quảng cáo giá sai chưa xác minh được → bài không nêu số.
+- Chưa có số lượt tìm kiếm/lượt dùng thật. Chưa mở dự án mới: chưa có dữ liệu cho thấy hướng khác nhanh hơn.
+- Bài tiếp theo trong danh sách: số 2 (sổ doanh thu theo quý từ file xuất đơn), 3, 4, 5, 6.

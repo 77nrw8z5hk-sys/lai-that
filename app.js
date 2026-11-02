@@ -141,6 +141,8 @@ function compute() {
   return { bySku, rev, fee, tax, cogs, net: rev - fee - tax - cogs, failed, orders: Object.keys(perOrder).length };
 }
 
+const discPct = () => { const d = +$("h_disc").value.replace(/\D/g, "") || 0; return d >= 90 ? 0 : d; };
+
 function render() {
   if (!orders.length) return;
   const r = compute();
@@ -154,6 +156,8 @@ function render() {
   $("k_ret").textContent = `${r.failed}/${r.orders}`;
 
   const rows = Object.entries(r.bySku).sort((a, b) => b[1].rev - a[1].rev);
+  const disc = discPct();
+  $("th_list").textContent = disc > 0 ? `Niêm yết để giảm ${disc}%` : "Giá niêm yết";
   const shown = unlocked ? rows : rows.slice(0, CFG.freeSkus);
   $("lock").classList.toggle("hide", unlocked || rows.length <= CFG.freeSkus);
   const tb = $("tbl").querySelector("tbody");
@@ -163,6 +167,7 @@ function render() {
     const tr = document.createElement("tr");
     const cell = (t, cls) => { const td = document.createElement("td"); td.textContent = t; if (cls) td.className = cls; tr.appendChild(td); };
     cell(sku); cell(s.qty); cell(fmt(s.rev)); cell(fmt(s.fee + s.tax));
+    cell(disc > 0 && disc < 90 && s.qty ? fmt(s.rev / s.qty / (1 - disc / 100)) : "–");
     const td = document.createElement("td");
     const inp = document.createElement("input");
     inp.type = "number"; inp.value = costs[sku] || ""; inp.placeholder = "0";
@@ -282,8 +287,11 @@ function heroCalc() {
   for (const [l, v] of lines) { add(l, "−" + fmt(v), "cut"); left -= v; }
   $("h_net").textContent = fmt(left);
   $("h_total").classList.toggle("neg", left < 0);
+  const d = discPct();
+  $("h_list").textContent = price && d > 0 ? `Muốn hiển thị giảm ${d}% mà khách vẫn trả ${fmt(price)} thì niêm yết ${fmt(price / (1 - d / 100))} (phải là giá bạn từng bán thật).` : "";
   $("h_note").textContent = price ? `Sàn chuyển về ${fmt(left + cost)} (${Math.round((left + cost) / price * 100)}%), biên lãi ${(left / price * 100).toFixed(1)}%` : "";
 }
+$("h_disc").addEventListener("input", () => { heroCalc(); if (orders.length) render(); });
 ["h_price", "h_cost"].forEach((id) => {
   $(id).addEventListener("input", (e) => {
     const n = vnd(e.target.value);

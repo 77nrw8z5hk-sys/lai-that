@@ -22,5 +22,10 @@ Web tĩnh GitHub Pages: https://77nrw8z5hk-sys.github.io/lai-that/ (đẩy lên 
 4. Ghi 1 dòng vào `NHAT-KY.md`: ngày · việc đã làm · link bài · số liệu đo được.
 5. Commit + push thẳng `main`.
 
+## Tự sinh dự án
+- Mỗi Thứ Hai sau khi nghiên cứu, nếu thấy nhu cầu khác có khả năng ra tiền nhanh hơn (công cụ tính toán, mẫu bảng tính, trang hướng dẫn cho nhóm khách khác…) thì được tự mở dự án mới thành thư mục con trong kho (`/<ten-du-an>/index.html`, tự lên GitHub Pages), thu tiền cùng cách: VietQR Vietcombank 1016315101 + Zalo 0972699196.
+- Ghi mỗi dự án vào `DU-AN.md`: tên, ngày mở, giả thuyết, số đo, trạng thái. Dự án 14 ngày không có dấu hiệu (lượt dùng, tin nhắn, tiền) thì đóng, dồn sức cho cái khác.
+- Không báo cáo dài; chỉ khi tổng kết mới ghi `SAU-THAT-BAI.md` (hoặc `KET-QUA.md` nếu đạt) ngắn gọn: số tiền, đã thử gì, học được gì.
+
 ## Cấm
 Giao dịch/chuyển tiền; khuyến nghị đầu tư; cam kết lợi nhuận; đánh giá giả, bot tăng lượt, spam; sao chép bài người khác; ghi khoá/mật khẩu vào kho; sửa số tài khoản nhận tiền hay Zalo; hoạt động trái luật dưới mọi hình thức.

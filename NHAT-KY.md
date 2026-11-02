@@ -2,3 +2,4 @@
 - 01/11/2026 · dựng web, bài phí Shopee 2026, sitemap · https://77nrw8z5hk-sys.github.io/lai-that/ · doanh thu 0đ
 - 31/10/2026 · bài mới hàng hoàn trả (công thức, ví dụ tay); web chưa kiểm được do proxy chặn 403 · https://77nrw8z5hk-sys.github.io/lai-that/hang-hoan-tinh-lai.html · doanh thu 0đ
 - 01/11/2026 · bài ROAS hòa vốn quảng cáo + thêm alias cột đọc file (mã sku, ngày tạo đơn…); URL chưa kiểm được do proxy 403 · https://77nrw8z5hk-sys.github.io/lai-that/roas-hoa-von-quang-cao.html · doanh thu 0đ
+- 02/11/2026 (Thứ Hai) · tính năng giá niêm yết để giảm X% (ô đầu trang + cột bảng, thử bằng dữ liệu mẫu: 81.600đ giảm 40% → 136.000đ) · 2 bài: thue-san-khau-tru-1-5-phan-tram.html, giam-gia-40-van-lai.html · nghiên cứu lại thị trường, tạo DU-AN.md + mục Tự sinh dự án · không tải được bộ skill (codeload bị proxy 403), không curl được trang (403) · doanh thu 0đ

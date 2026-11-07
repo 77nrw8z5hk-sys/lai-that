@@ -38,4 +38,4 @@
 - Đã làm: bài 1 (thuế 1,5% sàn khấu trừ) và bài giảm 40% niêm yết; tính năng ưu tiên số 1 (ô "muốn giảm %" + cột giá niêm yết) đã có trong công cụ.
 - Tìm lại: Nghị định 117/2025 hiệu lực 01/07/2025 (sàn khấu trừ nộp thay); ngưỡng miễn thuế vẫn mâu thuẫn giữa nguồn (500 triệu vs 1 tỷ; có nhắc NĐ 68/2026, NĐ 141/2026, TT 18/2026) → giữ cách ghi "đối chiếu văn bản gốc". Mức phạt quảng cáo giá sai chưa xác minh được → bài không nêu số.
 - Chưa có số lượt tìm kiếm/lượt dùng thật. Chưa mở dự án mới: chưa có dữ liệu cho thấy hướng khác nhanh hơn.
-- Bài tiếp theo trong danh sách: số 2 (sổ doanh thu theo quý từ file xuất đơn), 3, 4, 5, 6.
+- Bài 2 đã viết 07/11. Bài tiếp theo: 3, 4, 5, 6. Nhiều nguồn nói NĐ 141/2026 nâng ngưỡng không chịu thuế lên 1 tỷ (từ 2026), nguồn khác vẫn mốc 500 triệu → vẫn ghi "đối chiếu".
